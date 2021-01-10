@@ -7,7 +7,7 @@
 
 2.安装依赖库
 ```python
-pip install request
+pip install requests
 pip install pyOpenSSL
 ```
 
@@ -26,3 +26,20 @@ pip install trustocean_sdk
 - API PASSWORD/Token密码,如果您已经生成过，请继续使用之前生成的。如果还没有生成，可以通过 [访问此页面创建](https://console.trustocean.com/partner/api-setting) ，特别注意，当您生成了新的API-Token之后，之前的API-Token将会失效。
 - 同时需要将您用于请求API的电脑/服务器的公网IPv4地址添加到 [此页面的API白名单](https://console.trustocean.com/partner/api-setting) 一栏，才可确保能正常和接口交互。
 
+#### 在您的项目代码中使用此SDK
+引入SDK库中的API客户端到代码
+```python
+from trustocean_sdk import client as TrustOceanClient
+```
+创建API客户端实例
+```python
+api_username = '你的环智中诚账户邮箱地址'
+api_token = '你在环智中诚API页面创建的API-Token'
+
+apiClient = TrustOceanClient.APIClient(api_username, api_token)
+```
+检查是否可以正常访问API服务
+```python
+result = apiClient.check_service_status()
+print(result)
+```
