@@ -94,7 +94,7 @@ class X509Utils:
 
     # 根据提供的信息创建CSR代码和KEY进行返回
     def generate_csr(self,
-                     key_type='RSA',
+                     key_type,
                      common_name='your-domain-name-here.com',
                      country_code='CN',
                      state_or_province_name='someState',
