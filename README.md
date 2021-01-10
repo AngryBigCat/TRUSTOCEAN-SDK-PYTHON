@@ -60,3 +60,10 @@ new_key_pair = x509Utils.generate_csr(TrustOceanUtils.X509Utils.SIGN_TYPE_RSA, '
 print(key_pair['csr_code']) # 文本格式的CSR代码内容
 print(key_pair['key_code']) # 文本格式的私钥KEY代码内容
 ```
+创建ECC签名的CSR代码和KEY私钥，用于申请更高安全系数的ECC加密的SSL证书
+```python
+x509Utils = TrustOceanUtils.X509Utils()
+new_key_pair = x509Utils.generate_csr(TrustOceanUtils.X509Utils.SIGN_TYPE_ECC, 'trustocean.com')
+print(key_pair['csr_code']) # 文本格式的CSR代码内容
+print(key_pair['key_code']) # 文本格式的私钥KEY代码内容
+```

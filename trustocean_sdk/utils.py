@@ -81,11 +81,10 @@ class X509Utils:
     # 根据提供的类型创建私钥
     def generate_key(self, key_type):
         key = crypto.PKey()
-        if key_type == 'RSA':
-            key_type = self.SIGN_TYPE_RSA
+        key = crypto.PKey()
+        if key_type == self.SIGN_TYPE_RSA:
             bits = 2048
-        elif key_type == 'ECC':
-            key_type = self.SIGN_TYPE_ECC
+        elif key_type == self.SIGN_TYPE_ECC:
             bits = 1024
         else:
             raise UtilsError("Unsupported Key_Sign_Type, only support RSA and ECC")
@@ -98,10 +97,10 @@ class X509Utils:
                      key_type='RSA',
                      common_name='your-domain-name-here.com',
                      country_code='CN',
-                     state_or_province_name=None,
-                     locality_name=None,
-                     organization_name=None,
-                     organizational_unit_name=None
+                     state_or_province_name='someState',
+                     locality_name='someCity',
+                     organization_name='someOrganization',
+                     organizational_unit_name='someUnitName'
                      ):
         req = crypto.X509Req()
         # Return an X509Name object representing the subject of the certificate.
@@ -116,5 +115,8 @@ class X509Utils:
         req.set_pubkey(key)
         # Sign the certificate, using the key pkey and the message digest algorithm identified by the string digest.
         req.sign(key, 'sha256')
-        return req, key
+
+        return {'csr_code': crypto.dump_certificate_request(crypto.FILETYPE_PEM, req).decode('utf-8'),
+                'key_code': crypto.dump_privatekey(crypto.FILETYPE_PEM, key).decode('utf-8')
+                }
 
