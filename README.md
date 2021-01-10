@@ -9,6 +9,7 @@
 ```python
 pip install requests
 pip install pyOpenSSL
+pip install pem
 ```
 
 3.安装此SDK
@@ -41,5 +42,21 @@ apiClient = TrustOceanClient.APIClient(api_username, api_token)
 检查是否可以正常访问API服务
 ```python
 result = apiClient.check_service_status()
-print(result)
+if result['status'] == 'success':
+    print('connected')
+else:
+    print('connection error')
+    print(result)
+```
+##### 生成用于创建SSL订单的CSR代码和KEY私钥
+此SDK提供了一系列工具来帮助您更加轻松的创建SSL证书订单，在开始使用这些工具之前，您需要先导入工具库到您的代码中
+```python
+from trustocean_sdk import utils as TrustOceanUtils
+```
+创建RSA签名的CSR代码和KEY私钥，用于申请常用的RSA2048位加密的SSL证书
+```python
+x509Utils = TrustOceanUtils.X509Utils()
+new_key_pair = x509Utils.generate_csr(TrustOceanUtils.X509Utils.SIGN_TYPE_RSA, 'trustocean.com')
+print(key_pair['csr_code']) # 文本格式的CSR代码内容
+print(key_pair['key_code']) # 文本格式的私钥KEY代码内容
 ```
