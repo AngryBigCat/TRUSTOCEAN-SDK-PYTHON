@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: trustocean-sdk
+Version: 1.0.0
+Summary: A SDK package of TrustOcean Limited SSL API
+Home-page: https://github.com/londry/TRUSTOCEAN-Python-SDK
+Author: TrustOcean Limited
+Author-email: jasonlong@qiaokr.com
+License: UNKNOWN
+Description: ### TRUSTOCEAN SSL SDK
+        由TrustOcean Limited专门为Python用户开发的TrustOcean API SDK, 用于对接数字证书接口，支持数字证书申请、吊销、验证、续期等操作。
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

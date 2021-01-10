@@ -1,0 +1,6 @@
+#.DS_Store
+.idea/
+.idea
+venv/
+venv
+*.DS_Store
