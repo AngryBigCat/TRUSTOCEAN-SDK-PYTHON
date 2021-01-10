@@ -4,3 +4,7 @@
 venv/
 venv
 *.DS_Store
+tests/
+tests
+trustocean_sdk.egg-info
+trustocean_sdk.egg-info/
