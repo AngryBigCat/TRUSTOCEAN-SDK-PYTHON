@@ -14,13 +14,20 @@ from .request import ApiRequest
 
 # 产品可能会支持的所有订购周期, 具体不同产品可能支持的订购数量不同
 class ProductPeriodHelper:
-    PERIOD_1_MONTH = 'monthly'
-    PERIOD_3_MONTHS = 'quarterly'
-    PERIOD_12_MONTHS = 'annually'
-    PERIOD_24_MONTHS = 'biennially'
-    PERIOD_36_MONTHS = 'triennially'
-    PERIOD_48_MONTHS = 'quadrennial'
-    PERIOD_60_MONTHS = 'quinquennial'
+    # 1个月有效期
+    PERIOD_MONTHLY_1_MONTH = 'monthly'
+    # 3个月有效期
+    PERIOD_QUARTERLY_3_MONTHS = 'quarterly'
+    # 1年有效期
+    PERIOD_ANNUALLY_12_MONTHS = 'annually'
+    # 2年有效期
+    PERIOD_BIENNIALLY_24_MONTHS = 'biennially'
+    # 3年有效期
+    PERIOD_TRIENNIALLY_36_MONTHS = 'triennially'
+    # 4年有效期
+    PERIOD_QUADRENNIAL_48_MONTHS = 'quadrennial'
+    # 5年有效期
+    PERIOD_QUINQUENNIAL_60_MONTHS = 'quinquennial'
 
 
 # 产品的验证方式, 邮箱验证方式应该填写具体的域名邮箱地址
