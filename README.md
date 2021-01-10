@@ -64,6 +64,24 @@ print(key_pair['key_code']) # 文本格式的私钥KEY代码内容
 ```python
 x509Utils = TrustOceanUtils.X509Utils()
 new_key_pair = x509Utils.generate_csr(TrustOceanUtils.X509Utils.SIGN_TYPE_ECC, 'trustocean.com')
-print(key_pair['csr_code']) # 文本格式的CSR代码内容
-print(key_pair['key_code']) # 文本格式的私钥KEY代码内容
+print(new_key_pair['csr_code']) # 文本格式的CSR代码内容
+print(new_key_pair['key_code']) # 文本格式的私钥KEY代码内容
+```
+##### 获取API账户可订购的产品信息
+此接口主要用于获取产品信息，产品信息中的多个信息将用于后续创建证书订单的接口，因此您需要将您的产品信息缓存在本地以备用，或根据自己的业务逻辑进行存储。
+```python
+products = apiClient.get_product_list()
+print(products['products'])
+```
+响应中的`products`值为`pid->[productinfo]`格式的参数，对应每款产品信息，产品信息中最主要的参数包括
+```text
+pid: 产品的pid,用于订购下单
+name: 产品的名称
+class: 产品的验证类型 DV/OV/EV
+multidomain: 是否支持保护多条域名 off/on
+wildcard: 是否支持保护通配符域名 off/on
+ipv4: 是否支持保护公网IPv4地址 off/on
+brand: 产品的品牌
+chineseName: 产品的中文名称备注
+periods: 产品支持的订购周期，下单时可以对照 trustocean_sdk.client.ProductPeriodHelper 中定义的常量进行传入
 ```
