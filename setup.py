@@ -11,7 +11,7 @@ setuptools.setup(
     description="A SDK package of TrustOcean Limited SSL API",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/londry/TRUSTOCEAN-Python-SDK",
+    url="https://github.com/londry/TRUSTOCEAN-SDK-PYTHON",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
