@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="trustocean-sdk", # replace with your own username
-    version="1.0.0",
+    version="1.0.1",
     author="TrustOcean Limited",
     author_email="jasonlong@qiaokr.com",
     description="A SDK package of TrustOcean Limited SSL API",
