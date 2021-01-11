@@ -56,9 +56,9 @@ class APIClient:
         return self.REQUEST.send_request('getProductList')
 
     # 从远端生成域名预验证信息
-    def get_pre_domain_validation_information(self, domains: str, csr_code: str, unique_id: str) -> dict:
+    def get_pre_domain_validation_information(self, domains: list, csr_code: str, unique_id: str) -> dict:
         return self.REQUEST.send_request('getPreDomainValidationInformation',
-                                         {'domains': domains, 'csr_code': csr_code, 'unique_id': unique_id}
+                                         {'domains': ','.join(domains), 'csr_code': csr_code, 'unique_id': unique_id}
                                          )
 
     # 创建新的SSL订单
@@ -71,7 +71,6 @@ class APIClient:
                              contact_email: str,
                              callback_url: str = None,
                              domains: list = None,
-                             renew: str = None,
                              organization_name: str = None,
                              organizational_unit_name: str = None,
                              registered_address_line1: str = None,
@@ -85,6 +84,7 @@ class APIClient:
                              contact_name: str = None,
                              contact_title: str = None,
                              contact_phone: str = None,
+                             renew: str = None
                              ) -> dict:
         params = {
             'pid': pid,
@@ -113,8 +113,9 @@ class APIClient:
         return self.REQUEST.send_request('addSSLOrder', params)
 
     # 从API服务中创建一个不重复的UniqueID
-    def create_unique_id(self) -> dict:
-        return self.REQUEST.send_request('createNewUniqueId')
+    def create_unique_id(self) -> str:
+        result = self.REQUEST.send_request('createNewUniqueId')
+        return result['unique_id']
 
     # 检查自定义生成的Unique_id是否可用
     def check_unique_id(self, unique_id: str) -> dict:
